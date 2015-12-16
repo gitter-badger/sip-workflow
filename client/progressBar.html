@@ -1,0 +1,16 @@
+<template name="progressbar">
+  <div class="checkout-progress-container">
+<p>yoyo111333</p>
+    <ul class="checkout-progress-bar">
+
+
+      {{#each reactionTemplate workflow="sipWorkflow"}}
+      <li class="{{progressbarStatusClass}}">
+        <span class="progress-step-badge">{{position}}</span>
+        <span class="progress-step-label" data-i18n="checkoutProgressBar.{{toCamelCase label}}">{{label}}</span>
+      </li>
+      {{/each}}
+
+    </ul>
+  </div>
+</template>
