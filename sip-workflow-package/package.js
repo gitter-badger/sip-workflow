@@ -7,6 +7,9 @@ Package.describe({
 Package.onUse(function (api) {
   api.versionsFrom("METEOR@1.2.1");
 
+  // reaction core
+  api.use("reactioncommerce:core@0.10.0");
+
   // making basic sip form work
   api.use("reactive-var");
   api.imply("reactive-var");
@@ -17,5 +20,4 @@ Package.onUse(function (api) {
   api.imply("peerlibrary:xml2js");
   api.use("mizzao:user-status");
   api.use("mizzao:accounts-testing");
-
 });

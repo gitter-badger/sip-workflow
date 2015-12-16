@@ -4,7 +4,7 @@
     <ul class="checkout-progress-bar">
 
 
-      {{#each reactionTemplate workflow="sipWorkflow"}}
+      {{#each reactionTemplate workflow="sipCartWorkflow"}}
       <li class="{{progressbarStatusClass}}">
         <span class="progress-step-badge">{{position}}</span>
         <span class="progress-step-label" data-i18n="checkoutProgressBar.{{toCamelCase label}}">{{label}}</span>
