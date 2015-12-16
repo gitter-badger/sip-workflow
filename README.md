@@ -6,8 +6,8 @@ Reaction template/theme/workflow/package
 
 To install you could use the [install script](https://raw.github.com/elkridgelodge/sip-workflow/master/install.sh) using cURL:
 
-    curl https://raw.github.com/elkridgelodge/sip-workflow/master/install.sh | /bin/bash && ./reaction &
+    curl https://raw.github.com/elkridgelodge/sip-workflow/master/install.sh | /bin/sh
 
 or Wget:
 
-    wget -qO- https://raw.github.com/elkridgelodge/sip-workflow/master/install.sh | /bin/bash && ./reaction &
+    wget -qO- https://raw.github.com/elkridgelodge/sip-workflow/master/install.sh | /bin/sh

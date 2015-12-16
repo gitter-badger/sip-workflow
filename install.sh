@@ -5,4 +5,6 @@ $HOME/reaction/reaction pull
 git clone https://github.com/elkridgelodge/sip-workflow.git $HOME/reaction/sip-workflow
 mv $HOME/reaction/sip-workflow/sip-workflow-package $HOME/reaction/packages
 cp $HOME/reaction/sip-workflow/private/data/Shops.json $HOME/reaction/packages/reaction-sample-data/private/data
-$HOME/reaction/reaction && cd $HOME/reaction && meteor add sip-workflow-package
+echo "cd reaction"
+echo "meteor add sip-workflow-package"
+echo "./reaction"
