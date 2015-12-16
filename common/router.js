@@ -4,9 +4,9 @@
 
 Router.map(function () {
   this.route("sipcheckout", {
-    layoutTemplate: "sipcheck",
+    layoutTemplate: "sipCartCheckout",
     path: "sipcheckout",
-    template: "sipcheck",
+    template: "sipCartCheckout",
     yieldTemplates: {
       checkoutHeader: {
         to: "layoutHeader"
