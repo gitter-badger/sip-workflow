@@ -1,6 +1,6 @@
 ReactionCore.registerPackage({
   label: 'SIP Workflow',
-  name: 'sip-workflow',
+  name: 'sip-workflow-package',
   autoEnable: true,
   layout: [{
     layout: "sipLayout",
