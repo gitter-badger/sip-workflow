@@ -21,5 +21,9 @@ Package.onUse(function (api) {
   api.use("mizzao:user-status");
   api.use("mizzao:accounts-testing");
 
+  api.addFiles("server/load.js", "server")
   api.addFiles("server/register.js", "server");
+  api.addAssets("private/data/Products.json", "server")
+  api.addAssets("private/data/Shops.json", "server")
+  api.addAssets("private/data/Tags.json", "server")
 });
