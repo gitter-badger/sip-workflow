@@ -1,6 +1,6 @@
 Package.describe({
   summary: "Sip Workflow",
-  name: "sip-workflow-package",
+  name: "sip-workflow",
   version: "0.0.0",
 });
 
@@ -32,17 +32,17 @@ Package.onUse(function (api) {
   api.addAssets("private/data/Shops.json", "server")
   api.addAssets("private/data/Tags.json", "server")
 
-  api.addFiles("sip-workflow/client/admin.html", "client")
-  api.addFiles("sip-workflow/client/firstinfo.html", "client")
-  api.addFiles("sip-workflow/client/nextbutton.html", "client")
-  api.addFiles("sip-workflow/client/nextbutton.js", "client")
-  api.addFiles("sip-workflow/client/progressBar.html", "client")
-  api.addFiles("sip-workflow/client/progressBar.js", "client")
-  api.addFiles("sip-workflow/client/secondinfo.html", "client")
-  api.addFiles("sip-workflow/client/secondinfo.js", "client")
-  api.addFiles("sip-workflow/client/sipCartCheckout.html", "client")
-  api.addFiles("sip-workflow/client/sipCartCheckout.js", "client")
-  api.addFiles("sip-workflow/client/template-overrides.js", "client")
-  api.addFiles("sip-workflow/common/router.js", ["client", "server"])
-  api.addFiles("sip-workflow/server/sipserver.js", "server")
+  api.addFiles("client/admin.html", "client")
+  api.addFiles("client/firstinfo.html", "client")
+  api.addFiles("client/nextbutton.html", "client")
+  api.addFiles("client/nextbutton.js", "client")
+  api.addFiles("client/progressBar.html", "client")
+  api.addFiles("client/progressBar.js", "client")
+  api.addFiles("client/secondinfo.html", "client")
+  api.addFiles("client/secondinfo.js", "client")
+  api.addFiles("client/sipCartCheckout.html", "client")
+  api.addFiles("client/sipCartCheckout.js", "client")
+  api.addFiles("client/template-overrides.js", "client")
+  api.addFiles("common/router.js", ["client", "server"])
+  api.addFiles("server/sipserver.js", "server")
 });
