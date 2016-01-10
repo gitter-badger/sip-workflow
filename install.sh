@@ -4,7 +4,7 @@ git clone https://github.com/reactioncommerce/reaction.git $HOME/reaction
 $HOME/reaction/reaction pull
 git clone https://github.com/elkridgelodge/sip-workflow.git $HOME/reaction/packages/sip-workflow
 echo "@@@ Everything install OK? @@@"
-echo "@@@Next Steps:"
+echo "@@@ If so, next steps are:"
 echo ""
 echo "cd reaction"
 echo "meteor add sip-workflow"
