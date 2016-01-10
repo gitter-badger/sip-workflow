@@ -7,7 +7,15 @@ Template.nextbutton.events({
     userObj.emails = [{address: email, verified: false}]
     userObj.phones = [{phone: phone, verified: false}]
     if (email && phone) {
-      Meteor.insecureUserLogin(phone)
+
+    Meteor.call("workflow/pushCartWorkflow", "sipCartWorkflow",
+      "secondinfo");
+
+    Meteor.call("workflow/pushCartWorkflow", "sipCartWorkflow",
+      "secondinfo");
+
+
+//      Meteor.insecureUserLogin(phone)
       Session.set("insecureloggedin", true)
       var userid = Meteor.userId()
     } else if (!phone || phone == '') {
@@ -17,7 +25,10 @@ Template.nextbutton.events({
     }
     console.log("Form submitted.")
 
-Session.set("infocollectstage", 2)
+    Meteor.call("workflow/pushCartWorkflow", "sipCartWorkflow",
+      "secondinfo");
+
+
   },
 
 })

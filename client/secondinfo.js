@@ -5,9 +5,6 @@ Meteor.subscribe('userdata', function () {
 Session.setDefault('othernumber', '')
 
 Template.secondinfo.helpers({
-  stagetwo: function () {
-    return Session.equals("infocollectstage", 2)
-  },
   mainnumber: function () {
 //console.log(Template.instance().mainnumber.get())
     if (Meteor.users.findOne({_id: Meteor.userId()})) {

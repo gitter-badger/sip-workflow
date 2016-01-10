@@ -1,3 +1,21 @@
+//
+// cartCheckout is a wrapper template
+// controlling the load order of checkout step templates
+//
+//
+// If you are looking for:
+//  - cartWorkflow
+//  - cartWorkflowPosition
+//  - cartWorkflowCompleted
+// see helpers/cart.coffee
+//
+
+Template.sipCartCheckout.helpers({
+  cart: function () {
+    return ReactionCore.Collections.Cart.findOne();
+  }
+});
+
 Template.sipCartCheckout.onRendered(function () {
   // ensure checkout drawer does not display
   Session.set("displayCartDrawer", false);
@@ -8,4 +26,3 @@ Template.sipCartCheckout.onRendered(function () {
       "sipCartCheckout");
   }
 });
-
