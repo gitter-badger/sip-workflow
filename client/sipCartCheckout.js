@@ -26,3 +26,26 @@ Template.sipCartCheckout.onRendered(function () {
       "sipCartCheckout");
   }
 });
+
+/**
+ * checkoutSteps Helpers
+ * helper isPending evaluates that this is
+ * the current step, or has been processed already
+ *
+ */
+Template.sipCheckoutSteps.helpers({
+  isCompleted: function () {
+    if (this.status === true) {
+      return this.status;
+    }
+    return false;
+  },
+
+  isPending: function () {
+    if (this.status === this.template) {
+      return this.status;
+    }
+    return false;
+  }
+});
+
