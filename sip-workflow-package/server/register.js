@@ -3,13 +3,13 @@ ReactionCore.registerPackage({
   name: 'sip-workflow-package',
   autoEnable: true,
   layout: [{
-    layout: "sipLayout",
+    layout: "coreLayout",
     provides: "sipCartWorkflow",
     collection: "Cart",
     theme: "default",
     enabled: true
   }, {
-      template: "sipCartCheckout",
+      template: "firstinfo",
       label: "Give Info",
       workflow: 'sipCartWorkflow',
       container: 'checkout-steps-main',
@@ -17,10 +17,10 @@ ReactionCore.registerPackage({
       priority: 1,
       position: "1"
     }, {
-    template: "checkoutAddressBook",
+    template: "secondinfo",
     label: "Receive Goodies",
     workflow: "sipCartWorkflow",
-    container: "checkout-steps-main",
+    container: "checkout-steps-side",
     audience: ["guest", "anonymous"],
     priority: 2,
     position: "2"
