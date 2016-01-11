@@ -32,7 +32,10 @@ Package.onUse(function (api) {
   api.addAssets("private/data/Shops.json", "server")
   api.addAssets("private/data/Tags.json", "server")
 
-  api.addFiles("client/admin.html", "client")
+  // admin
+  api.addFiles("client/admin/admin.html", "client")
+
+  // checkout workflow
   api.addFiles("client/firstinfo.html", "client")
   api.addFiles("client/firstinfo.js", "client")
   api.addFiles("client/nextbutton.html", "client")
@@ -49,4 +52,9 @@ Package.onUse(function (api) {
   api.addFiles("client/template-overrides.js", "client")
   api.addFiles("common/router.js", ["client", "server"])
   api.addFiles("server/sipserver.js", "server")
+
+  // call center
+  api.addFiles("client/admin/callcenter/callcenterdashboard.html", "client")
+  api.addFiles("client/admin/callcenter/callcenterdashboard.js", "client")
+  api.addFiles("client/admin/callcenter/callcenteridle.js", "client")
 });
