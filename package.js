@@ -54,7 +54,10 @@ Package.onUse(function (api) {
   api.addFiles("server/sipserver.js", "server")
 
   // call center
+  api.addFiles("client/admin/callcenter/jsoninspector.html", "client")
+  api.addFiles("client/admin/callcenter/jsoninspector.js", "client")
   api.addFiles("client/admin/callcenter/callcenterdashboard.html", "client")
   api.addFiles("client/admin/callcenter/callcenterdashboard.js", "client")
   api.addFiles("client/admin/callcenter/callcenteridle.js", "client")
+  api.addFiles("server/pubperm.js", "server")
 });

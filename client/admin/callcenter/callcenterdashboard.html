@@ -3,6 +3,9 @@
 <ul>
 {{#each activeusers}}
 <span style="font-size: 2em; color: green;"><li>active: {{phoneid}}</li></span>
+<div class="sipCallcenterCart">
+{{> jsoninspector}}
+</div>
 {{/each}}
 {{#each idleusers}}
 <span style="font-size: 2em; color: yellow;"><li>idle: {{phoneid}}</li></span>
