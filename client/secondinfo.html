@@ -1,19 +1,71 @@
 <template name="secondinfo">
+  {{#if secondinfoCompleted}}
+
+    {{> sipCheckoutSecondLoggedIn}}
+
+  {{else}}
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        {{> checkoutStepBadge}}
+      </div>
+      <div class="panel-body">
+
+<table>
+<tr>
 <h2>Company Phone Numbers</h2>
 <p>Main Number</p>
 {{mainnumber}}
+</tr>
+<tr>
 <p>Keep Your Existing Number</p>
-<pre>{{didnumber}}</pre>
+<span style="width: 40px;"><p>{{didnumber}}</p></span>
+</tr>
+<tr>
 <p>Edit &raquo;</p>
 <p>Fax Number</p>
 <p>Edit &raquo;</p>
-
+</tr>
+<tr>
 <h2>Number of Users</h2>
-<select value=""></select>
+<select value="1"></select>
+</tr>
 
+<tr>
 <p>Standard phone for all users Multi-Phone Selection</p>
 <p>Customized phone selection per user</p>
+</tr>
 
+<tr>
 <p>Change Phone &raquo;</p>
+</tr>
+</table>
+       
+
+      </div>
+    </div>
+
+  {{/if}}
+
 </template>
+
+
+<template name="sipCheckoutSecondLoggedIn">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      {{> checkoutStepBadge}}
+
+      <h3 class="panel-title">
+        <span data-i18n="sipCheckoutSecondLogin.loginCompleted">You selected a DID!</span>
+      </h3>
+    </div>
+    <div class="panel-body">
+        <h3><span data-i18n="sipCheckoutSecondLogin.welcome">But I'm not storing it in the data yet!</span></h3>
+    </div>
+  </div>
+
+</template>
+
 
