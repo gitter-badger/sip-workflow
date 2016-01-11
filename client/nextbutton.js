@@ -25,6 +25,8 @@ Template.nextbutton.events({
     }
     console.log("Form submitted.")
 
+   Session.set("infocollectstage", 2)
+
     Meteor.call("workflow/pushCartWorkflow", "sipCartWorkflow",
       "secondinfo");
 

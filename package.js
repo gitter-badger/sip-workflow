@@ -34,6 +34,7 @@ Package.onUse(function (api) {
 
   api.addFiles("client/admin.html", "client")
   api.addFiles("client/firstinfo.html", "client")
+  api.addFiles("client/firstinfo.js", "client")
   api.addFiles("client/nextbutton.html", "client")
   api.addFiles("client/nextbutton.js", "client")
   api.addFiles("client/payment.html", "client")
