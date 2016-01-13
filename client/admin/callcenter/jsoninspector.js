@@ -1,7 +1,16 @@
 Template.jsoninspector.helpers ({
   keys: function () {
     return Object.keys(Carts.findOne({}))
-  }
+  },
+  callcenterdashboard: function () {
+    var userId = Meteor.userId()
+    if (userId) {
+      var user = Meteor.users.findOne({_id: userId})
+      if (user.emails[0].verified == true) {
+        return true
+      }
+    }
+  },
 })
 
 Template.jsoninspector.rendered = function() {

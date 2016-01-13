@@ -1,5 +1,5 @@
 function adminUser(userId) {
-  var adminUser = Meteor.users.findOne({username:"admin"});
+  var adminUser = Meteor.users.findOne({username:"Admin"});
   return (userId && adminUser && userId === adminUser._id);
 }
 
@@ -27,4 +27,8 @@ ReactionCore.Collections.Cart.allow({
       return true;
     });
   }
+});
+
+Meteor.publish("userStatus", function() {
+  return Meteor.users.find({ "status.online": true });
 });

@@ -1,4 +1,4 @@
-Meteor.subscribe("userstatus")
+Meteor.subscribe("userStatus")
 
 Template.callcenterdashboard.helpers({
   callcenterdashboard: function () {
@@ -11,12 +11,12 @@ Template.callcenterdashboard.helpers({
     }
   },
   activeusers: function () {
-    return Meteor.users.find({"status.idle": false, username: {$exists: 1}})
+    return Meteor.users.find({"status.idle": false})
   },
   idleusers: function () {
-    return Meteor.users.find({"status.idle": true, username: {$exists: 1}})
+    return Meteor.users.find({"status.idle": true})
   },
   phoneid: function () {
-    return this.username
+    return this._id
   },
 })
