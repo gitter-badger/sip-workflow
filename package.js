@@ -11,6 +11,7 @@ Package.onUse(function (api) {
   api.use("blaze-html-templates");
   api.use("session");
   api.use("underscore");
+  api.use("deps");
 
   // reaction core
   api.use("reactioncommerce:core@0.10.0");
