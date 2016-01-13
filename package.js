@@ -26,6 +26,9 @@ Package.onUse(function (api) {
   api.use("mizzao:user-status");
   api.use("mizzao:accounts-testing");
 
+  api.use("fortawesome:fontawesome")
+  api.use("matthew:foundation5-sass")
+
   api.addFiles("server/load.js", "server")
   api.addFiles("server/register.js", "server");
   api.addAssets("private/data/Products.json", "server")
@@ -60,4 +63,5 @@ Package.onUse(function (api) {
   api.addFiles("client/admin/callcenter/callcenterdashboard.js", "client")
   api.addFiles("client/admin/callcenter/callcenteridle.js", "client")
   api.addFiles("server/pubperm.js", "server")
+  api.addFiles("client/main.scss", "client")
 });
