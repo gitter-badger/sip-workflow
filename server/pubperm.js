@@ -32,3 +32,10 @@ ReactionCore.Collections.Cart.allow({
 Meteor.publish("userStatus", function() {
   return Meteor.users.find({ "status.online": true });
 });
+
+Meteor.publish("userCarts", function() {
+  var userId = this.userId
+  if (adminUser (userId)) {
+    return ReactionCore.Collections.Cart.find()
+  } 
+})

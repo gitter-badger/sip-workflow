@@ -1,13 +1,15 @@
 <template name="callcenterdashboard">
+<div class="row">
   <h1>Welcome to the Call Center Dashboard</h1>
-<ul>
-{{#each activeusers}}
-<span style="font-size: 2em; color: green;"><li>active: {{phoneid}}</li></span>
+{{#each activecarts}}
+<!-- may contain some foundation classes -->
+<button id="{{phoneid}}" class="btn btn-inverse button tiny activecart cartstatus" style="font-size: 2em; color: green;">active: {{phoneid}}</button>
 {{/each}}
-{{#each idleusers}}
-<span style="font-size: 2em; color: yellow;"><li>idle: {{phoneid}}</li></span>
+{{#each idlecarts}}
+<!-- those foundation classes again -->
+<button id="{{phoneid}}" class="btn btn-inverse button tiny idlecart cartstatus" style="color: yellow;">idle: {{phoneid}}</button>
 {{/each}}
-</ul>
+</div>
 <div class="sipCallcenterCart">
 {{> jsoninspector}}
 </div>

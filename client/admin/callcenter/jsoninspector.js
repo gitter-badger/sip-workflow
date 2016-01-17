@@ -1,3 +1,5 @@
+Meteor.subscribe("userCarts")
+
 Template.jsoninspector.helpers ({
   keys: function () {
     return Object.keys(Carts.findOne({}))
@@ -13,163 +15,72 @@ Template.jsoninspector.helpers ({
   },
 })
 
+Template.jsoninspector.created = function () {
+  this.reactivevar = new ReactiveVar()
+  if (Session.get("current_assisted_cart")) {
+    this.reactivevar = ReactionCore.Collections.Cart.findOne({userId: Session.get("current_assisted_cart")})
+  } else {
+    this.reactivevar = ReactionCore.Collections.Cart.findOne()
+  }
+}
+
 Template.jsoninspector.rendered = function() {
+  var self = this
+  Tracker.autorun(function () {
+    var current_assisted_cart = self.reactivevar
       // This is the starting value for the editor
       // We will use this to seed the initial editor
       // and to provide a "Restore to Default" button.
+
       var starting_value = [
-        {
-          name: "John Smith",
-          age: 35,
-          gender: "male",
-          location: {
-            city: "San Francisco",
-            state: "California",
-            citystate: ""
-          },
-          pets: [
-            {
-              name: "Spot",
-              type: "dog",
-              fixed: true
-            },
-            {
-              name: "Whiskers",
-              type: "cat",
-              fixed: false
-            }
-          ]
-        }
+        ReactionCore.Collections.Cart.findOne({userId: current_assisted_cart})
       ];
-      
+
       // Initialize the editor
       var editor = new JSONEditor(document.getElementById('editor_holder'),{
-      theme: 'foundation5',
+      theme: 'bootstrap3',
       iconlib: 'fontawesome4',
         // Enable fetching schemas via ajax
         ajax: true,
-        
+
         // The schema for the editor
         schema: {
-
           type: "array",
-          title: "People",
+          title: "Carts",
           format: "tabs",
           items: {
-            title: "Person",
-	    headerTemplate: "{{i}} - {{self.name}}",
-            oneOf: [
-              {
-  "title": "Person",
-  "type": "object",
-  "id": "person",
-  "properties": {
-    "name": {
-      "type": "string",
-      "description": "First and Last name",
-      "minLength": 4
-    },
-    "age": {
-      "type": "integer",
-      "default": 21,
-      "minimum": 18,
-      "maximum": 99
-    },
-    "gender": {
-      "type": "string",
-      "enum": [
-        "male",
-        "female"
-      ]
-    }
-  },
-
-                title: "Basic Person"
-              },
-              {
-  "title": "Person",
-  "type": "object",
-  "id": "person",
-  "properties": {
-    "name": {
-      "type": "string",
-      "description": "First and Last name",
-      "minLength": 4
-    },
-    "age": {
-      "type": "integer",
-      "default": 21,
-      "minimum": 18,
-      "maximum": 99
-    },
-    "gender": {
-      "type": "string",
-      "enum": [
-        "male",
-        "female"
-      ]
-    }
-  },
-
-    "properties": {
-    "location": {
-      "type": "object",
-      "title": "Location",
-      "properties": {
-        "city": {
-          "type": "string"
-        },
-        "state": {
-          "type": "string"
-        },
-        "citystate": {
-          "type": "string",
-          "description": "This is generated automatically from the previous two fields",
-          "template": "{{city}}, {{state}}",
-          "watch": {
-            "city": "person.location.city",
-            "state": "person.location.state"
+            title: "Cart",
+            headerTemplate: "{{i}}",
+            oneOf: [{
+              "title": "Title of a cart type (maybe)",
+              "type": "object",
+              "id": "someuniquecarttype",
+              "properties": {
+                "workflow": {
+                  "type": "object",
+        	  "description": "Checkout Workflow",
+                  "properties": {
+                    "status": {
+                      "type": "string"
+                    },
+                    "workflow": {
+                      "type": "array",
+                    },
+                  }                                
+                },
+                "items": {
+                  "type": "array"
+        	  },
+                "userId": {
+        	  "type": "string"
+        	  },
+        	},
+        	title: "DID/Phones Checkout Cart"
+            }, ]
           }
-        }
-      }
-    },
-    "pets": {
-      "type": "array",
-      "format": "table",
-      "title": "Pets",
-      "uniqueItems": true,
-      "items": {
-        "type": "object",
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": [
-              "cat",
-              "dog",
-              "bird",
-              "reptile",
-              "other"
-            ],
-            "default": "dog"
-          },
-          "name": {
-            "type": "string"
-          },
-          "fixed": {
-            "type": "boolean",
-            "title": "spayed / neutered"
-          }
-        }
-      }
-    }
-  },
-                title: "Complex Person"
-              }
-            ]
-          }
-
         },
-        
+
+ 
         // Seed the form with a starting value
         startval: starting_value,
 
@@ -190,7 +101,7 @@ Template.jsoninspector.rendered = function() {
       
       // Hook up the Restore to Default button
       document.getElementById('restore').addEventListener('click',function() {
-        editor.setValue(starting_value);
+        editor.setValue([ReactionCore.Collections.Cart.findOne({userId: Session.get("current_assisted_cart")})]);
       });
 
       // Hook up the enable/disable button
@@ -220,8 +131,9 @@ Template.jsoninspector.rendered = function() {
         }
         // Valid
         else {
-          indicator.style.color = 'yellow';
+          indicator.style.color = 'green';
           indicator.textContent = "valid";
         }
       })
+  })
 }

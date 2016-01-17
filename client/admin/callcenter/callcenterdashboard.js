@@ -10,13 +10,21 @@ Template.callcenterdashboard.helpers({
       }
     }
   },
-  activeusers: function () {
+  activecarts: function () {
     return Meteor.users.find({"status.idle": false})
   },
-  idleusers: function () {
+  idlecarts: function () {
     return Meteor.users.find({"status.idle": true})
   },
   phoneid: function () {
     return this._id
   },
+})
+
+Template.callcenterdashboard.events({
+  'click .cartstatus': function () {
+    if (!Session.equals("current_assisted_cart", this._id)) {
+      Session.set("current_assisted_cart", this._id)
+    }
+  }
 })
