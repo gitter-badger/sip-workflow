@@ -1,6 +1,6 @@
 Meteor.subscribe("userStatus")
 
-Template.callcenterdashboard.helpers({
+Template.callcenterdashboardinner.helpers({
   callcenterdashboard: function () {
     var userId = Meteor.userId()
     if (userId) {
@@ -21,7 +21,7 @@ Template.callcenterdashboard.helpers({
   },
 })
 
-Template.callcenterdashboard.events({
+Template.callcenterdashboardinner.events({
   'click .cartstatus': function () {
     if (!Session.equals("current_assisted_cart", this._id)) {
       Session.set("current_assisted_cart", this._id)

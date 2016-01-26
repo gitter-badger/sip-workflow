@@ -52,7 +52,7 @@ Template.jsoninspector.rendered = function() {
             title: "Cart",
             headerTemplate: "{{i}}",
             oneOf: [{
-              "title": "Title of a cart type (maybe)",
+              "title": "DID/Phones Checkout Cart",
               "type": "object",
               "id": "someuniquecarttype",
               "properties": {
@@ -75,7 +75,6 @@ Template.jsoninspector.rendered = function() {
         	  "type": "string"
         	  },
         	},
-        	title: "DID/Phones Checkout Cart"
             }, ]
           }
         },
@@ -103,6 +102,10 @@ Template.jsoninspector.rendered = function() {
       document.getElementById('restore').addEventListener('click',function() {
         editor.setValue([ReactionCore.Collections.Cart.findOne({userId: Session.get("current_assisted_cart")})]);
       });
+
+      $(".cartstatus").click(function() {
+        editor.setValue([ReactionCore.Collections.Cart.findOne({userId: this.id})])
+      })
 
       // Hook up the enable/disable button
       document.getElementById('enable_disable').addEventListener('click',function() {

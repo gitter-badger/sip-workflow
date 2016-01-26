@@ -1,4 +1,11 @@
 <template name="callcenterdashboard">
+{{> callcenterdashboardinner}}
+<div class="sipCallcenterCart">
+{{> jsoninspector}}
+</div>
+</template>
+
+<template name="callcenterdashboardinner">
 <div class="row">
   <h1>Welcome to the Call Center Dashboard</h1>
 {{#each activecarts}}
@@ -10,8 +17,4 @@
 <button id="{{phoneid}}" class="btn btn-inverse button tiny idlecart cartstatus" style="color: yellow;">idle: {{phoneid}}</button>
 {{/each}}
 </div>
-<div class="sipCallcenterCart">
-{{> jsoninspector}}
-</div>
-
 </template>
