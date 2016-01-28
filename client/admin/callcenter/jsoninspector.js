@@ -92,7 +92,11 @@ Template.jsoninspector.rendered = function() {
       });
       
       Tracker.autorun(function (){
-        editor.setValue([ReactionCore.Collections.Cart.findOne({userId: Session.get("current_assisted_cart")})])
+        if (Session.get("current_assisted_cart")) {
+          editor.setValue([ReactionCore.Collections.Cart.findOne({userId: Session.get("current_assisted_cart")})])
+        } else {
+          editor.setValue([ReactionCore.Collections.Cart.findOne({}, {sort: {updatedAt: -1}})])
+        }
       })
 
       // Hook up the submit button to log to the console
