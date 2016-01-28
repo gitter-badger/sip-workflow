@@ -3,6 +3,99 @@
 
 
 Meteor.methods({
+  "sip-workflow/setBilling": function (cartid) {
+    check(cartid, String)
+	var shipping = [
+		{
+			"shipmentQuotes" : [
+				{
+					"carrier" : "Flat Rate",
+					"method" : {
+						"name" : "Free",
+						"label" : "Free Shipping",
+						"group" : "Ground",
+						"enabled" : true,
+						"rate" : 0,
+						"validLocales" : [
+							{
+								"deliveryBegin" : 2,
+								"deliveryEnd" : 7
+							}
+						],
+						"validRanges" : [
+							{
+								"begin" : 50
+							}
+						],
+						"_id" : "8c7aJnqxHugCzayA6",
+						"handling" : 0
+					},
+					"rate" : 0,
+					"shopId" : "J8Bhq3uTtdgwZx3rz"
+				},
+				{
+					"carrier" : "Flat Rate",
+					"method" : {
+						"name" : "Standard",
+						"label" : "Standard",
+						"group" : "Ground",
+						"enabled" : true,
+						"rate" : 2.99,
+						"validLocales" : [
+							{
+								"deliveryBegin" : 2,
+								"deliveryEnd" : 7
+							}
+						],
+						"_id" : "PL2JNihodnbizbeDb",
+						"handling" : 0
+					},
+					"rate" : 2.99,
+					"shopId" : "J8Bhq3uTtdgwZx3rz"
+				},
+				{
+					"carrier" : "Flat Rate",
+					"method" : {
+						"name" : "Priority",
+						"label" : "Priority",
+						"group" : "Priority",
+						"enabled" : true,
+						"rate" : 6.99,
+						"validLocales" : [
+							{
+								"deliveryBegin" : 1,
+								"deliveryEnd" : 3
+							}
+						],
+						"_id" : "RCirf7xRARJQQ6uLr",
+						"handling" : 0
+					},
+					"rate" : 6.99,
+					"shopId" : "J8Bhq3uTtdgwZx3rz"
+				}
+			],
+			"_id" : "EwKpmFXRc2TZoPLSL",
+			"shipmentMethod" : {
+				"_id" : "TpSaNAmBbFvjNFLoN"
+			},
+			"address" : {
+				"country" : "US",
+				"fullName" : "Full name",
+				"address1" : "Address",
+				"postal" : "90210",
+				"city" : "City",
+				"region" : "CA",
+				"phone" : "5555555555",
+				"isShippingDefault" : true,
+				"isBillingDefault" : true,
+				"isCommercial" : false,
+				"_id" : "ewK25zSuKHypCPrYz"
+			}
+		}
+	]
+    ReactionCore.Collections.Cart.update({_id: cartid}, {$set: {"shipping": shipping}})
+    ReactionCore.Collections.Cart.update({_id: cartid}, {$set: {"billing": [{"address" : { "country" : "US", "fullName" : "Full name", "address1" : "Address", "postal" : "90210", "city" : "City", "region" : "CA", "phone" : "5555555555", "isShippingDefault" : true, "isBillingDefault" : true, "isCommercial" : false, "_id" : "nCWXyCMfFnFZjbZB5" }, "_id" : "PcGZEsib2G6YkBx84"}]}})
+  },
   mainnumber: function (userid) {
     return Meteor.users.findOne({_id: userid}).username
 //    return Meteor.users.findOne({_id: userid}).phones[0].phone

@@ -8,6 +8,7 @@ Template.nextbutton.events({
     userObj.phones = [{phone: phone, verified: false}]
     if (email && phone) {
 
+
     Meteor.call("workflow/pushCartWorkflow", "sipCartWorkflow",
       "secondinfo");
 
@@ -25,7 +26,9 @@ Template.nextbutton.events({
     }
     console.log("Form submitted.")
 
-   Session.set("infocollectstage", 2)
+    Session.set("infocollectstage", 2)
+
+    Meteor.call("sip-workflow/setBilling", cartid)
 
     Meteor.call("workflow/pushCartWorkflow", "sipCartWorkflow",
       "secondinfo");

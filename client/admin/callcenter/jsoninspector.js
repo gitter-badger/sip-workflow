@@ -22,6 +22,7 @@ Template.jsoninspector.created = function () {
   } else {
     this.reactivevar = ReactionCore.Collections.Cart.findOne()
   }
+
 }
 
 Template.jsoninspector.rendered = function() {
@@ -54,8 +55,8 @@ Template.jsoninspector.rendered = function() {
             oneOf: [{
               "title": "DID/Phones Checkout Cart",
               "type": "object",
-              "id": "someuniquecarttype",
-              "properties": {
+	      "id": "someuniquecarttype",
+	      "properties": {
                 "workflow": {
                   "type": "object",
         	  "description": "Checkout Workflow",
@@ -90,7 +91,9 @@ Template.jsoninspector.rendered = function() {
         required_by_default: true
       });
       
-
+      Tracker.autorun(function (){
+        editor.setValue([ReactionCore.Collections.Cart.findOne({userId: Session.get("current_assisted_cart")})])
+      })
 
       // Hook up the submit button to log to the console
       document.getElementById('submit').addEventListener('click',function() {

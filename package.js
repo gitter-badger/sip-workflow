@@ -26,6 +26,8 @@ Package.onUse(function (api) {
   api.imply("peerlibrary:xml2js");
   api.use("mizzao:user-status");
   api.use("mizzao:accounts-testing");
+  
+  api.use("cunneen:json-editor")
 
   api.use("fortawesome:fontawesome")
   api.use("matthew:foundation5-sass")
